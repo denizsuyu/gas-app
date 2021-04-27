@@ -1,0 +1,34 @@
+<div style="margin-bottom: 20px;">
+    <button (click)="GetList('')" style="margin: 10px;">Hepsi</button>
+    <button (click)="GetList('otogaz')" style="margin: 10px;">Otogaz</button>
+    <button (click)="GetList('benzin')" style="margin: 10px;">Benzin</button>
+</div>
+
+<div style="overflow-x:auto;">
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Tip</th>
+            <th>Şirket</th>
+            <th>Litre</th>
+            <th>Litre Fiyatı</th>
+            <th>Toplam Fiyat</th>
+            <th>Toplam Kilometre</th>
+            <th>Kilometre Başı Fiyat</th>
+        </tr>
+        <tr *ngFor="let i of list">
+            <td>{{i.id}}</td>
+            <td>{{i.type}}</td>
+            <td>{{i.company}}</td>
+            <td>{{i.liter}}</td>
+            <td>{{i.literPrice}}</td>
+            <td>{{i.totalPrice}}</td>
+            <td>{{i.totalKilometer}}</td>
+            <td>{{i.pricePerKilometer}}</td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-top: 20px;">
+    Akaryakıta Giden Para: {{totalGasPrice}} ₺
+</div>
