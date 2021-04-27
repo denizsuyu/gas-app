@@ -11,21 +11,14 @@ export class HomeComponent implements OnInit {
 
   public list: Array<GasModel> = new Array<GasModel>();
   public totalGasPrice: number = 0;
+  public totalKilometer: number = 0;
 
   constructor(
     private homeService: HomeService
   ) { }
 
   ngOnInit(): void {
-    this.homeService.GetList().subscribe(response => {
-      this.list = response as Array<GasModel>;
-
-      for (let index = 1; index < this.list.length; index++) {
-        this.list[index].pricePerKilometer = this.list[index].totalPrice / (this.list[index].totalKilometer - this.list[index - 1].totalKilometer);
-      }
-
-      this.totalGasPrice = this.list.reduce((x, y) => x + y.totalPrice, 0);
-    });
+    this.GetList("");
   }
 
   public GetList(type: string) {
@@ -41,7 +34,7 @@ export class HomeComponent implements OnInit {
       }
 
       this.totalGasPrice = this.list.reduce((x, y) => x + y.totalPrice, 0);
+      this.totalKilometer = this.list.length > 1 ? this.list[this.list.length - 1].totalKilometer - this.list[0].totalKilometer : 0;
     });
   }
-
 }
