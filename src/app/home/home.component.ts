@@ -29,8 +29,10 @@ export class HomeComponent implements OnInit {
         this.list = this.list.filter(x => x.type == type);
       }
 
-      for (let index = 1; index < this.list.length; index++) {
-        this.list[index].pricePerKilometer = this.list[index].totalPrice / (this.list[index].totalKilometer - this.list[index - 1].totalKilometer);
+      if (this.list.length > 1) {
+        for (let index = 1; index < this.list.length; index++) {
+          this.list[index].pricePerKilometer = this.list[index].totalPrice / (this.list[index].totalKilometer - this.list[index - 1].totalKilometer);
+        }
       }
 
       this.totalGasPrice = this.list.reduce((x, y) => x + y.totalPrice, 0);
