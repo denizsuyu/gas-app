@@ -1,5 +1,6 @@
 export class GasModel {
     id: number;
+    date: string;
     type: string;
     company: string;
     liter: number;

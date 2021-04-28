@@ -8,6 +8,7 @@
     <table>
         <tr>
             <th>No</th>
+            <th>Tarih</th>
             <th>Tip</th>
             <th>Şirket</th>
             <th>Litre</th>
@@ -18,6 +19,7 @@
         </tr>
         <tr *ngFor="let i of list">
             <td>{{i.id}}</td>
+            <td>{{i.date}}</td>
             <td>{{i.type}}</td>
             <td>{{i.company}}</td>
             <td>{{i.liter}}</td>
